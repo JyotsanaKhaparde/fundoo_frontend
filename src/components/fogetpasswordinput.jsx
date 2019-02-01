@@ -10,6 +10,13 @@ import React, { Component } from "react";
 import { toast } from "react-toastify";
 import { userForgetPassword } from "../services/userServices";
 class ForgetPasswordInput extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            email: '',
+            toast: false,
+        }
+    }
     handleuseremailChange = (event) => {
         const email = event.target.value
         this.setState({ email: email })
@@ -25,7 +32,8 @@ class ForgetPasswordInput extends Component {
             }
             else {
                 event.preventDefault()
-                userForgetPassword(this.state.email);
+                const verify_token = localStorage.getItem('forgetPassToken');
+                userForgetPassword(verify_token);
             }
     }
     render() {

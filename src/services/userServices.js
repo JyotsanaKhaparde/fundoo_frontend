@@ -61,6 +61,12 @@ function userForgetPassword(email) {
             email: email
         })
         .then(function (response) {
+            console.log("64---userServices.js--FE--responsedata", response.data);
+            const ForgetPassToken1 = response.data;
+            const ForgetPassToken2 = ForgetPassToken1.substring(34)
+            console.log("25---userService.js FE---Token2 :", ForgetPassToken2); //getting token
+            localStorage.setItem('forgetPassToken', ForgetPassToken2);
+            alert('Please Check your email for verification')
             console.log(response);
             // window.location.href = '/login'
         })
@@ -71,7 +77,8 @@ function userForgetPassword(email) {
 function userverifyEmail(token) {
     console.log('63--inside user service.js--- FE :', token); // getting token
 
-    axios.post(`/verifyEmail/${token}`, "", { headers: {
+    axios.post(`/verifyEmail/${token}`, "", {
+        headers: {
             'token': token
         }
     })
@@ -87,9 +94,29 @@ function userverifyEmail(token) {
             alert('User is not verified.. Please verify email!!');
         });
 }
+
+function userverifyForgetPassword(token) {
+    console.log('98--inside user service.js--- FE :', token); // getting token
+    axios.post(`/verifyForgetPass/${token}`, "", {
+        headers: {
+            'token': token
+        }
+    })
+        .then(function (response) {
+            console.log("105---userService.js--FE----response: ", response);
+            alert('User verified successfully');
+            window.location.href = '/resetPassword'
+        })
+        .catch(function (err) {
+
+            console.log(err);
+            alert('User is not verified.. Please verify email!!');
+        });
+}
 export {
     userRegister,
     userLogin,
     userForgetPassword,
-    userverifyEmail
+    userverifyEmail,
+    userverifyForgetPassword
 }

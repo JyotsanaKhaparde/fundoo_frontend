@@ -12,7 +12,9 @@ import Login from './pages/login';
 import Registraion from './pages/registraion';
 import Dashboard from './pages/dashboard';
 import ForgetPassword from './pages/forgetpassword';
-import VerifyEmail from './pages/verifyemail'
+import VerifyEmail from './pages/verifyemail';
+import VerifyForgetPass from './pages/verifyforgetpass';
+import ResetPassword from './pages/resetpassword'
 class App extends Component {
   render() {
     return (
@@ -24,6 +26,8 @@ class App extends Component {
             <Route path="/dashboard" component={Dashboard}></Route>
             <Route path="/verifyEmail/"  component={VerifyEmail}></Route>
             <Route path="/forgetpassword" component={ForgetPassword}></Route>
+            <Route path="/verifyForgetPass/" component={VerifyForgetPass}></Route>
+            <Route path="/resetPassword" component={ResetPassword}></Route>
           </div>
         </Router>
       </div>
