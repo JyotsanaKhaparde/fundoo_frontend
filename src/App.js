@@ -12,7 +12,7 @@ import Login from './pages/login';
 import Registraion from './pages/registraion';
 import Dashboard from './pages/dashboard';
 import ForgetPassword from './pages/forgetpassword';
-
+import VerifyEmail from './pages/verifyemail'
 class App extends Component {
   render() {
     return (
@@ -22,6 +22,7 @@ class App extends Component {
             <Route path="/login" component={Login}></Route>
             <Route path="/registraion" component={Registraion}></Route>
             <Route path="/dashboard" component={Dashboard}></Route>
+            <Route path="/verifyEmail/"  component={VerifyEmail}></Route>
             <Route path="/forgetpassword" component={ForgetPassword}></Route>
           </div>
         </Router>
@@ -29,5 +30,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;

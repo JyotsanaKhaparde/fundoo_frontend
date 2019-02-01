@@ -9,18 +9,7 @@
 import React, { Component } from "react";
 import { toast } from "react-toastify";
 import { userForgetPassword } from "../services/userServices";
-
-//import { TextField, Button, MenuItem } from '@material-ui/core'
-//import { GridColumn, GridRow,PageHeader,InfoAlert,
-// Form,FormGroup,PasswordInput,RepeatPasswordInput,SuccessButton} from 'react-grid-system';
 class ForgetPasswordInput extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: "",
-            //usersData: [],
-        }
-    }
     handleuseremailChange = (event) => {
         const email = event.target.value
         this.setState({ email: email })
@@ -46,7 +35,6 @@ class ForgetPasswordInput extends Component {
                     <form>
                         <div className="App_form">
                             <div className="insideDiv">
-
                                 <label>Enter Email</label>
                                 <input type="text" placeholder="Enter valid email" name="email" value={this.state.email} onChange={this.handleuseremailChange} />
                                 <button type="submit" className="button" onClick={this.handleSubmit}>Sent Link</button>

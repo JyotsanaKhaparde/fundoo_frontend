@@ -8,7 +8,6 @@
 import axios from 'axios';
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-import { func } from 'prop-types';
 function userRegister(firstname, lastname, email, password) {
     axios.post('/registration',
         {
@@ -20,8 +19,15 @@ function userRegister(firstname, lastname, email, password) {
         })
         .then(function (response) {
             toast("Registered Successfully.....", { position: toast.POSITION.BOTTOM_CENTER });
-            console.log(response);
-            window.location.href = '/login'
+            console.log("response after register", response.data);
+            const token1 = response.data;
+            const token2 = token1.substring(34)
+            console.log("25---userService.js FE---Token2 :", token2); //getting token
+            localStorage.setItem('verifyToken', token2);
+            alert('Please Check your email for verification')
+            //  window.location.href = `/registraion`
+            //window.location.href = '/login'
+            // window.location.href = '/verifyEmail/:token'
         })
         .catch(function (err) {
             console.log(err);
@@ -56,14 +62,34 @@ function userForgetPassword(email) {
         })
         .then(function (response) {
             console.log(response);
-            window.location.href = '/login'
+            // window.location.href = '/login'
         })
         .catch(function (err) {
             console.log(err);
         });
 }
+function userverifyEmail(token) {
+    console.log('63--inside user service.js--- FE :', token); // getting token
+
+    axios.post(`/verifyEmail/${token}`, "", { headers: {
+            'token': token
+        }
+    })
+        .then(function (response) {
+            console.log("81---userService.js--FE----response: ", response);
+
+            alert('User verified successfully');
+            window.location.href = '/login'
+        })
+        .catch(function (err) {
+
+            console.log(err);
+            alert('User is not verified.. Please verify email!!');
+        });
+}
 export {
     userRegister,
     userLogin,
-    userForgetPassword
+    userForgetPassword,
+    userverifyEmail
 }

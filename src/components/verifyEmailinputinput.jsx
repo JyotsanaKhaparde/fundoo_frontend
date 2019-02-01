@@ -7,21 +7,20 @@
  *  @since          : 28/01/2019
  **********************************************************************************/
 import React, { Component } from "react";
-//import { TextField, Button, MenuItem } from '@material-ui/core'
-class DashboardInput extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            message: "",
-            usersData: [],
-        }
+import { userverifyEmail } from "../services/userServices";
+class VerifyEmailInput extends Component {
+    handleSubmit = (event) => {
+        event.preventDefault();
+        const verify_token = localStorage.getItem('verifyToken');
+        console.log("15--verifyEmailInput.jsx----token: ", verify_token); // getting token
+        userverifyEmail(verify_token);
     }
     render() {
         return (
             <div>
-                <label>Dashboard</label>
+                <button type="submit" className="button" onClick={this.handleSubmit}>Click here for login</button>
             </div>
         )
     }
 }
-export default DashboardInput;
+export default VerifyEmailInput;
