@@ -9,7 +9,7 @@
 import React, { Component } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { userLogin,} from "../services/userServices";
+import { userLogin, } from "../services/userServices";
 import { withRouter } from "react-router-dom";
 class LoginInput extends Component {
     constructor(props) {

@@ -25,9 +25,6 @@ function userRegister(firstname, lastname, email, password) {
             console.log("25---userService.js FE---Token2 :", token2); //getting token
             localStorage.setItem('verifyToken', token2);
             alert('Please Check your email for verification')
-            //  window.location.href = `/registraion`
-            //window.location.href = '/login'
-            // window.location.href = '/verifyEmail/:token'
         })
         .catch(function (err) {
             console.log(err);
@@ -47,7 +44,6 @@ function userLogin(username, password) {
             localStorage.setItem('password', password);
             localStorage.setItem('token', response.data.token)
             toast("Login Successfully.....", { position: toast.POSITION.BOTTOM_CENTER });
-            //console.log(response);
             window.location.href = '/dashboard'
         })
         .catch(function (err) {
@@ -56,27 +52,21 @@ function userLogin(username, password) {
         });
 }
 function userForgetPassword(email) {
+    console.log('59--userService---FE--emial: ',email);
     axios.post('/forgetpassword',
         {
-            email: email
+            'email': email
         })
         .then(function (response) {
-            console.log("64---userServices.js--FE--responsedata", response.data);
-            const ForgetPassToken1 = response.data;
-            const ForgetPassToken2 = ForgetPassToken1.substring(34)
-            console.log("25---userService.js FE---Token2 :", ForgetPassToken2); //getting token
-            localStorage.setItem('forgetPassToken', ForgetPassToken2);
             alert('Please Check your email for verification')
             console.log(response);
-            // window.location.href = '/login'
         })
         .catch(function (err) {
             console.log(err);
         });
 }
 function userverifyEmail(token) {
-    console.log('63--inside user service.js--- FE :', token); // getting token
-
+    console.log('77--inside user service.js--- FE :', token); // getting token
     axios.post(`/verifyEmail/${token}`, "", {
         headers: {
             'token': token
@@ -84,33 +74,32 @@ function userverifyEmail(token) {
     })
         .then(function (response) {
             console.log("81---userService.js--FE----response: ", response);
-
             alert('User verified successfully');
             window.location.href = '/login'
         })
         .catch(function (err) {
-
             console.log(err);
             alert('User is not verified.. Please verify email!!');
         });
 }
 
-function userverifyForgetPassword(token) {
-    console.log('98--inside user service.js--- FE :', token); // getting token
-    axios.post(`/verifyForgetPass/${token}`, "", {
+function userResetPwd(password, token) {
+    console.log('115---userService.js---FE--password :', password);
+    // console.log('116---userService.js---FE--confirmpassword :', confirmpassword);
+    axios.post(`/resetPassword/${token}`, { 'password': password }, {
         headers: {
             'token': token
         }
     })
         .then(function (response) {
-            console.log("105---userService.js--FE----response: ", response);
-            alert('User verified successfully');
-            window.location.href = '/resetPassword'
+            console.log(response);
+            console.log('120---userServices.js---FE----response : ', response);
+            alert('password successfully reset....');
+            window.location.href = '/login'
         })
         .catch(function (err) {
-
             console.log(err);
-            alert('User is not verified.. Please verify email!!');
+            alert('process unsuccessful');
         });
 }
 export {
@@ -118,5 +107,5 @@ export {
     userLogin,
     userForgetPassword,
     userverifyEmail,
-    userverifyForgetPassword
+    userResetPwd
 }

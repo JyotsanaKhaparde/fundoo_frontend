@@ -3,7 +3,7 @@
  *  @file           : login.jsx
  *  @author         : Jyotsana Khaparde
  *  @version        : 1.0
- *  @since          : 28/01/2019
+ *  @since          : 01/02/2019
  **********************************************************************************/
 import React, { Component } from "react";
 import VerifyEmailInput from "../components/verifyEmailinputinput";

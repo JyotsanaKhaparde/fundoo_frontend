@@ -32,8 +32,8 @@ class ForgetPasswordInput extends Component {
             }
             else {
                 event.preventDefault()
-                const verify_token = localStorage.getItem('forgetPassToken');
-                userForgetPassword(verify_token);
+                // const verify_token = localStorage.getItem('forgetPassToken');
+                userForgetPassword(this.state.email);
             }
     }
     render() {
