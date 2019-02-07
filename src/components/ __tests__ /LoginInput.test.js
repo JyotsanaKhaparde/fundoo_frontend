@@ -1,4 +1,5 @@
 import React from 'react';
+//it will mock our component rendering in the DOM
 import { shallow } from 'enzyme';
 import LoginInput from '../../components/logininput'
 describe('LoginInput component', () => {
