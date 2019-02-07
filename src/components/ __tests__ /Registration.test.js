@@ -1,4 +1,5 @@
 import React from 'react';
+//it will mock our component rendering in the DOM
 import { shallow, mount, render } from 'enzyme';
 import Registraion from '../../pages/registraion'
 const component = shallow(<Registraion />);
