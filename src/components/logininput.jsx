@@ -67,9 +67,9 @@ class LoginInput extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <div className="insideDiv">
                             <label><b>Username</b></label>
-                            <input type="text" placeholder="useremail" name="username" value={this.state.username} onChange={this.handleusernameChange} />
+                            <input id="username" type="email" placeholder="useremail" name="username" value={this.state.username} onChange={this.handleusernameChange} />
                             <label><b>Password</b></label>
-                            <input type="password" placeholder="password" name="password" value={this.state.password} onChange={this.handlepasswordChange} />
+                            <input id="password" type="password" placeholder="password" name="password" value={this.state.password} onChange={this.handlepasswordChange} />
                         </div>
                         <div className="btnDiv">
                             <button type="submit" id="button"><b>SIGN IN</b></button>

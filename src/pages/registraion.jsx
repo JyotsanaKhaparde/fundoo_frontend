@@ -14,7 +14,7 @@ class Registraion extends Component {
                 <div class="regtext">
                     <h1>Registration</h1>
                 </div>
-                <div>
+                <div id="registrationinput">
                     <RegistrationInput />
                 </div>
             </div>
